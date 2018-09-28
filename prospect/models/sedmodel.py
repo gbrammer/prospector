@@ -81,7 +81,10 @@ class SedModel(ProspectorParams):
                                               component=obs.get('component', -1),
                                               lnwavegrid=obs.get('lnwavegrid', None),
                                               **self.params)
-
+                                              
+        if obs['filters'] is None:
+            phot = None
+            
         spec *= obs.get('normalization_guess', 1.0)
         # Remove negative fluxes.
         try:
